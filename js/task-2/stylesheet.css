@@ -1,0 +1,27 @@
+#table {
+	border: 2px solid black;
+}
+
+body {
+}
+
+#func {
+	height: 50px;
+	position: relative;
+	top: 7px;
+	margin-left: 30px;
+}
+
+#form {
+	position: relative;
+	top: 8px;
+}
+
+.func_ {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+p {
+	margin: 0px;
+}

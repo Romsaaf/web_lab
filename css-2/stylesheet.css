@@ -1,0 +1,100 @@
+body {
+	width: 100%;
+	margin: 0px;
+	margin-top: 0px;
+}
+
+.header {
+	border-bottom: 2px solid black;
+	background-color: #FFBC00;
+	padding: 20px;
+}
+
+h1 {
+	margin: 0px;
+	text-align: center;
+	font-size: 25px;
+	font-family: Arial;
+}
+
+.main-wrap {
+	height: 610px;
+	padding: 10px;
+	background-image: url(https://99px.ru/sstorage/53/2012/11/tmb_53900_8850.jpg);
+	background-position: center center;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.firstpic {
+	height: 75%;
+	width: 30%;
+	background-image: url(https://www.1zoom.ru/big2/868/322542-blackangel.jpg);
+	background-position: 80% 50%;
+	background-size: 130% 100%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.secondpic {
+	height: 75%;
+	width: 30%;
+	background-image: url(https://i07.fotocdn.net/s123/5f2536f42a68098f/public_pin_l/2801520060.jpg);
+	background-position: 43% 38%;
+	background-size: 200% 150%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.menu {
+	height: 10%;
+	width: 50%;
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.15);
+	background-color: violet;
+	border: 1px solid black;
+	border-radius: 5px;
+	font-family: Arial;
+	font-size: 25px;
+	display: block;
+	position: absolute;
+	top: 500px;
+	left: 320px;
+}
+
+.block {
+	height: 70%;
+	width: 15%;
+	padding: 10px;
+	box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.15);
+	background-color: #1FFF1F;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+li {
+	display: inline;
+}
+
+.footer {
+	border-top: 2px solid black;
+	width: 100%;
+	height: 50px;
+	background-color: #9F0000;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#copyright {
+	color: white;
+	font-family: Arial;
+}
