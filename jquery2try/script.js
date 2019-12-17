@@ -9,13 +9,11 @@ $(`a`)
     .attr(`href`, function(index, value) {
         value = value.split(`http`);
         if (value[0] == `` && value[1][0] != `s`) {
-            //Меняем только если протокол http.
             value.splice(0, 1);
             return `https` + value.join(`http`);
         }
         return value.join(`http`);
     });
-// Отмена действий при нажатии на кнопку
 task2_btn = () => {
     $(`a`)
         .removeAttr(`target`)
@@ -59,7 +57,6 @@ $(`.btn-hide`).click(function() {
                                 if (data.hasOwnProperty(key)) {
                                     const element = data[key];
                                     subCode += `<li>${key}: `;
-                                    // console.log(typeof element === `object`);
                                     if (typeof element === `object`) {
                                         subCode += `<ul>`;
                                         subCode += makeList(element);
@@ -70,14 +67,11 @@ $(`.btn-hide`).click(function() {
                                         subCode += `${element}`;
                                     }
                                     subCode += `</li>`;
-                                    // console.log(`${key}: ${element}`);
-                                    // console.log(`${code}`);
                                 }
                             }
                             return subCode;
                         })(data);
                         code += `</ul>`;
-                        console.log(`\n\n\n${code}`);
                         $(`.content`).append(code);
                     }
                 });
