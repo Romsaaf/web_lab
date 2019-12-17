@@ -17,7 +17,7 @@ function createTable() {
 	document.getElementById('func').children[0].innerHTML += '<form id="apply"><input type="text" placeholder="new width" id="nw" oninput="changeButtonText()"><select oninput="changeButtonText()"><option disabled selected>border</option><option>hidden</option><option>dotted</option><option>dashed</option><option>solid</option></select><input type="button" onclick="changeTableWidth()" value="Apply"></form>';
 	document.getElementById('func').children[1].innerHTML += '<form><input type="text" placeholder = "type header here" id = "header_hold"><input type="button" onclick="createHeader()" value="Header"></form>';
 	document.getElementById('func').children[2].innerHTML += '<form><input type="text" placeholder="Delete row #" id="delrow"><input type="button" onclick="deleteRow()" value="Delete"></form>';
-	document.getElementById('func').children[3].innerHTML += '<input type="button" onclick="magic()" value="This is gonna magic!">';
+	document.getElementById('func').children[3].innerHTML += '<input type="button" onclick="makeMagic()" value="This is gonna magic!">';
 	document.getElementById('func').children[4].innerHTML += '<input type="button" onclick="removeTable()" value="Delete table">';
 	
 }
@@ -44,29 +44,26 @@ function createHeader() {
 	let hh = document.getElementById("header_hold").value;
 	document.getElementById('table').innerHTML += '<caption>' + hh + '</caption>';
 }
-
-function magic(){
-	let mag = Math.floor(Math.random() * 4);
-	let row = Math.floor(Math.random() * localStorage.getItem('height')), column = Math.floor(Math.random() * localStorage.getItem('width'));
-	let randomCell = document.getElementById('tbody').children[row].children[column].firstChild;
-	switch (mag){
-		case 1:
-			randomCell.parentNode.innerHTML += '<form><input type="text" value="_"><input type="button" value="save" onclick="saveText(' + row + ', ' + column + ')"><form>';
-			document.getElementById('tbody').children[row].children[column].firstChild.remove();
-			break;
-		case 2:
-			let fc1 = Math.floor(Math.random() * 256), fc2 = Math.floor(Math.random() * 256), fc3 = Math.floor(Math.random() * 256);
-			randomCell.style = 'color: rgb('+fc1+', '+fc2+', '+fc3+');';
-			break;
-		case 3:
-			let bg1 = Math.floor(Math.random() * 256), bg2 = Math.floor(Math.random() * 256), bg3 = Math.floor(Math.random() * 256);
-			randomCell.style = 'background-color: rgb('+bg1+', '+bg2+', '+bg3+');';
-			break;
-		case 4:
-			let font = Math.floor(Math.random() * 11 + 15);
-			randomCell.style = 'font-size: '+font+'px;';
-			break;
+function makeMagic() {
+	let tds = document.querySelectorAll(`td`);
+	let td = tds[Math.floor(Math.random() * tds.length)];
+	if (!tds.length) return;
+	if (Math.random() >= 0.5) {
+		td.style.backgroundColor = randColor();
+		td.style.color = randColor();
+		td.style.fontSize = `${Math.floor(Math.random() * 10 + 15)}pt`;
+	} else {
+		let coords = td.id.split(`d`)[1];
+		let row = +coords.split(`,`)[0];
+		let col = +coords.split(`,`)[1];
+		td.innerHTML = `<form><input type="textarea" id="f${row},${col}"><input type="button" onclick="changedata(${row}, ${col})" value="Save"></form>`;
 	}
+}
+function randColor() {
+	let r = Math.floor(Math.random() * 256);
+	let g = Math.floor(Math.random() * 256);
+	let b = Math.floor(Math.random() * 256);
+	return `rgb(${r},${g},${b})`;
 }
 
 function deleteRow() {
